@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+{{ super() }} | Home
+{% endblock title %}
+
+{% block styles %}
+{{ super() }}
+    <link rel="stylesheet" href="{{ url_for('shop.static', filename='css/shop.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<h3>
+    Home
+    {% if current_user.is_authenticated %}
+    <span class="float-right">Hello, {{ user.first_name }}!</span>
+    {% else %}
+    <span class="float-right">Good day!</span>
+    {% endif %}
+    
+</h3>
+<hr />
+<p>Welcome to the product manager!</p>
+</div>
+{% endblock %}
