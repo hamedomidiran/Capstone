@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{{ url_for('main.index') }}">Product Manager</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('main.index') }}"
+          >Home <span class="sr-only">(current)</span></a>
+      {% if current_user.is_authenticated %}
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('main.profile') }}">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('main.listofusers') }}">Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('shop.home') }}">Shop</a>
+      </li>
+      {% if current_user.email == 'tatyanaparks@gmail.com' %}
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Products
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ url_for('shop.create_product') }}">Create Product</a>
+          
+          <a class="dropdown-item" href="{{ url_for('shop.remove_product') }}">Remove Product</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('main.contact') }}">Contact</a>
+      </li>
+      {% endif %}
+      {% endif %}
+    </ul>
+        <ul class="navbar-nav m1-auto">
+            {% if not current_user.is_authenticated %}
+            
+            <li class="nav-item">
+                <a href="{{ url_for('auth.login') }}" class="nav-link">Login</a></li>
+            <li class="nav-item">
+                <a href="{{ url_for('auth.register') }}" class="nav-link">Register</a></li>
+            {% else %}
+            <li class="nav-item">
+                <a href="{{ url_for('auth.logout') }}" class="nav-link">Logout</a></li>
+            {% endif %}
+        </ul>
+  </div>
+</nav>

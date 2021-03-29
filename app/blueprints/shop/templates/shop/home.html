@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+{{ super() }} | Shop
+{% endblock title %}
+
+{% block styles %}
+{{ super() }}
+    <link rel="stylesheet" href="{{ url_for('shop.static', filename='css/shop.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h3>Shop Inventory</h3>
+    <hr />
+    <div class="card-deck">
+        {% for p in products %}
+        <div class="col-md-4 product">
+            <div class="card">
+                <div class="card-header">
+                    <h6>
+                        {{ p.name }}
+                        <span class="float-right">${{ p.price }}</span>
+                    </h6>
+                </div>
+            <img class="card-img-top" src="https://placehold.it/500/500&image=Product" alt="{{ p.name }}">
+            <div class="card-body">
+                <p class="card-text">{{ p.description }}</p>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
