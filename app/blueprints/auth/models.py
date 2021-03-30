@@ -14,7 +14,7 @@ class User(UserMixin, db.Model):
     # _list = [] #Keeps track of the users
     #can instantiate init method
     #can add a role to the user class
-    #workout- have shop owner. only shop owner can create or add product. if current_user.email = tatyp@coding temple, display page. Can do this with  jinja statements. Or use aflask package
+    #workout- have shop owner. only shop owner can create or add product. if current_user.email = tomiwa.omidiran@coding temple, display page. Can do this with  jinja statements. Or use aflask package
     #or everytime user is instantiated add another field for auth so they dont have admin priviledges
     #each user when insantiated they have privledges to view products but not do anything else, one admin user based on user id or email that can change all the other users permissions.
 
